@@ -93,7 +93,7 @@ int main()
 	{
 		char choice = 0;
 		system("cls");
-		cout << "========LIFO=========" << endl;
+		cout << "========FIFO=========" << endl;
 
 		do //Loop until correct input
 		{
