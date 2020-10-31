@@ -98,9 +98,9 @@ int main()
 		do //Loop until correct input
 		{
 			cout << endl << "Choose an option" << endl;
-			cout << "[1] Push" << endl;
+			cout << "[1] Enqueue (add)" << endl;
 			cout << "[2] Count" << endl;
-			cout << "[3] Pop" << endl;
+			cout << "[3] Dequeue (remove)" << endl;
 			cout << "[4] Delete all" << endl;
 			cout << "[5] Exit." << endl;
 			cout << ">Answer: "; choice = _getch();
