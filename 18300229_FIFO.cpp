@@ -18,25 +18,25 @@ class List	//Contains the activities of the list.
 		}
 	};
 
-	Node* beggining;
+	Node* beginning;
 
 public:
 	List()
 	{
-		beggining = nullptr;
+		beginning = nullptr;
 	}
 
-	void push(T data) //adds element at the end of the list.
+	void enqueue(T data) //enqueue, adds element at the element.
 	{
 		Node* newNode, * cursor;
 		newNode = new Node();
 		newNode->data = data;
 
-		if (beggining == nullptr)
-			beggining = newNode;
+		if (beginning == nullptr)
+			beginning = newNode;
 		else
 		{
-			cursor = beggining;
+			cursor = beginning;
 			while (cursor->link) //while next link is not empty.
 				cursor = cursor->link;
 			cursor->link = newNode;
@@ -46,7 +46,7 @@ public:
 	int count() //Counts the elements in the list.
 	{
 		int elementCount = 0;
-		Node* cursor = beggining;
+		Node* cursor = beginning;
 		while (cursor)
 		{
 			elementCount++;
@@ -55,33 +55,21 @@ public:
 		return elementCount;
 	}
 
-	void pop() //Deletes a particular element in the list.
+	void dequeue() //Deletes first (oldest) element.
 	{
-		if (count() > 1) //more than a single node
-		{
-			Node* erase = beggining,
-				* prevElement = nullptr;
-
-			while (erase->link)	//moves cursor while link not null
-			{
-				prevElement = erase;
-				erase = erase->link;
-			}
-			delete erase;	//deletes last element.
-			prevElement->link = nullptr;	//points now last element to null;
-		}
-		else
-			beggining = nullptr;	//set beginning to null.
+		Node* erase = beginning;
+		beginning = beginning->link;	//Moves to next pointer or NULL.
+		delete erase;	//deletes beginning.
 	}
 
 	void deleteAll() //Clears list.
 	{
 		Node* erase;
 
-		while (beggining) //Deletes from first to last while link not null.
+		while (beginning) //Deletes from first to last while link not null.
 		{
-			erase = beggining;
-			beggining = beggining->link;
+			erase = beginning;
+			beginning = beginning->link;
 			delete erase;
 		}
 	}
@@ -125,7 +113,7 @@ int main()
 			cout << "Push:" << endl;
 			cout << "Item [" << myCollection.count() + 1 << "]: ";
 			cin >> dataValue;
-			myCollection.push(dataValue);
+			myCollection.enqueue(dataValue);
 			cout << "\n >Item added." << endl;
 			break;
 
@@ -135,9 +123,10 @@ int main()
 			cout << "\nThe element count is = " << myCollection.count() << " elements.\n";
 			break;
 
-		case '3':	//Pop
+		case '3':	//head
 			if (myCollection.checkEmpty()) break;
-			myCollection.pop();
+			myCollection.dequeue();
+			cout << "\nThe first element has been deleted.\n";
 			break;
 
 		case '4':	//Clear list
