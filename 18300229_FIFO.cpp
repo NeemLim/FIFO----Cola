@@ -109,7 +109,7 @@ int main()
 
 		switch (choice)
 		{
-		case '1':	//Pop -- add element
+		case '1':	//Queue -- add element
 			cout << "Push:" << endl;
 			cout << "Item [" << myCollection.count() + 1 << "]: ";
 			cin >> dataValue;
@@ -123,7 +123,7 @@ int main()
 			cout << "\nThe element count is = " << myCollection.count() << " elements.\n";
 			break;
 
-		case '3':	//head
+		case '3':	//Dequeue -- Delete
 			if (myCollection.checkEmpty()) break;
 			myCollection.dequeue();
 			cout << "\nThe first element has been deleted.\n";
